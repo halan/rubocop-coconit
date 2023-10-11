@@ -18,6 +18,15 @@ RSpec.describe RuboCop::Cop::Coconit::DigDeep, :config do
       nested_hash[a][b]
       ^^^^^^^^^^^^^^^^^ Coconit/DigDeep: Use `dig` instead of `[]`.
     RUBY
+
+    expect_correction(<<~RUBY)
+      nested_hash.dig("a", "b")
+      nested_hash.dig("a", "b", "c")
+      nested_hash.dig("a", "b", "c", "d")
+      nested_hash.dig(:a, "b")
+      nested_hash.dig("a", :b)
+      nested_hash.dig(a, b)
+    RUBY
   end
 
   it 'does not register an offense when using `dig` into a nested hash' do

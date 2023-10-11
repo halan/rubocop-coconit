@@ -1,1 +1,6 @@
 # Write it!
+
+Coconit/DigDeep:
+  Description: 'Avoid accessing deep hashes using [] in pior of using the dig method.'
+  Enabled: True
+  VersionAdded: '<<next>>'
